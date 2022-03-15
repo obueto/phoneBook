@@ -42,4 +42,14 @@ public class ContactRepositoryImpl implements ContactRepository{
        return null;
     }
 
+    @Override
+    public Contact findingBy(String mobile) {
+        for (Contact contact : db){
+            if (contact.getMobile().equals(mobile)){
+                return  contact;
+            }
+        }
+        return null;
+    }
+
 }

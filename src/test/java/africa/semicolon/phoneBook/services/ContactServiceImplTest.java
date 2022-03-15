@@ -3,6 +3,7 @@ package africa.semicolon.phoneBook.services;
 import africa.semicolon.phoneBook.data.repositories.ContactRepository;
 import africa.semicolon.phoneBook.data.repositories.ContactRepositoryImpl;
 import africa.semicolon.phoneBook.dtos.requests.AddContactRequestDto;
+import africa.semicolon.phoneBook.dtos.responses.FindUserResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -55,6 +56,21 @@ class ContactServiceImplTest {
         requestDto.setLastName("bbaj");
         requestDto.setMobileNumber("08788732544");
         addContactService.save(requestDto);
+        FindUserResponse userResponse = addContactService.findContactByName("flourish");
+
+        assertEquals("flourish",userResponse.getFirstName());
+
+    }
+    @Test
+    void TestThatAContactCanBeFoundByMobile(){
+        ContactService addContactService = new ContactServiceImpl();
+        AddContactRequestDto requestDto = new AddContactRequestDto();
+        requestDto.setFirstName("flourish");
+        requestDto.setLastName("bbaj");
+        requestDto.setMobileNumber("08788732544");
+        addContactService.save(requestDto);
+        FindUserResponse userResponse = addContactService.findContactByMobile("08788732544");
+        assertEquals("08788732544",userResponse.getMobile());
 
 
     }

@@ -6,6 +6,7 @@ public interface ContactRepository {
     Contact saveContact(Contact contact);
     void deleteContact(Contact contact2);
     Contact findBy (String name);
+    Contact findingBy (String mobile);
     int count();
 
 
